@@ -1,0 +1,33 @@
+START: IN 00H           
+       MOV C, A        
+       MOV D, A         
+       IN 01H           
+       MOV B, A         
+       MOV A, C        
+
+       Call LCM         
+       IN 02H           
+       MOV C, A        
+       MOV D, A        
+       IN 03H          
+       MOV B, A        
+       MOV A, C         
+
+       Call LCM         
+
+       HLT              
+
+LCM:   SUB B           
+       JNC LCM         
+       ADD B           
+       CPI 00         
+       JZ OP           
+       MOV A,D        
+       MOV D,A         
+       JMP LCM         
+
+OP:    MOV A,D        
+       OUT 03H         
+
+       RET            
+
