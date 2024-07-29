@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+// Function to simulate the 3-stage pipeline and calculate total cycles
+int simulatePipeline(int numInstructions) {
+    int fetch_cycles = 1;   // Fetch stage takes 1 cycle
+    int decode_cycles = 1;  // Decode stage takes 1 cycle
+    int execute_cycles = 1; // Execute stage takes 1 cycle
+
+    int total_cycles = 0;
+
+    // Calculate total cycles considering pipeline stages
+    total_cycles = numInstructions * (fetch_cycles + decode_cycles + execute_cycles);
+
+    return total_cycles;
+}
+
+int main() {
+    int numInstructions;
+
+    printf("Enter the number of instructions to simulate: ");
+    scanf("%d", &numInstructions);
+
+    int total_cycles = simulatePipeline(numInstructions);
+
+    printf("Total clock cycles needed to complete %d instruction(s) in a 3-stage pipeline: %d cycles\n", numInstructions, total_cycles);
+
+    return 0;
+}
